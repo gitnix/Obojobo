@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "obojobo-next",
 	"scripts": {
-		"delete:node_modules": "rm -rf node_modules && cd packages/obojobo-document-engine && rm -rf node_modules && cd ../obojobo-express && rm -rf node_modules && cd ../obojobo-document-xml-parser && rm -rf node_modules",
+		"delete:node_modules": "rm -rf packages/*/node_modules",
 		"precommit": "cd node_modules/obojobo-express && yarn precommit && cd ../obojobo-document-engine && yarn precommit",
 		"setup": "cd packages/obojobo-express && yarn build:docEngine && yarn db:rebuild",
 		"test": "cd node_modules/obojobo-document-xml-parser && yarn test && cd ../obojobo-express && yarn test && cd ../obojobo-document-engine && yarn test"

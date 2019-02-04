@@ -3,7 +3,7 @@ import './viewer-component.scss'
 import React from 'react'
 import _ from 'underscore'
 
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
+import { CSSTransition } from 'react-transition-group'
 
 import Common from 'Common'
 import Viewer from 'Viewer'
@@ -390,18 +390,13 @@ export default class MCAssessment extends React.Component {
 						)}
 					</div>
 					{explanationFooter}
-					<ReactCSSTransitionGroup
-						component="div"
-						transitionName="solution"
-						transitionEnterTimeout={800}
-						transitionLeaveTimeout={800}
-					>
+					<CSSTransition timeout={800} classNames="solution">
 						{isShowingExplanation ? (
 							<div className="solution-container" key="solution-component">
 								<SolutionComponent model={solution} moduleData={this.props.moduleData} />
 							</div>
 						) : null}
-					</ReactCSSTransitionGroup>
+					</CSSTransition>
 				</div>
 			)
 		}
@@ -452,14 +447,9 @@ export default class MCAssessment extends React.Component {
 							: null}
 					</div>
 				) : null}
-				<ReactCSSTransitionGroup
-					component="div"
-					transitionName="submit"
-					transitionEnterTimeout={800}
-					transitionLeaveTimeout={800}
-				>
-					{feedbackAndSolution}
-				</ReactCSSTransitionGroup>
+				<CSSTransition classNames="submit" timeout={800}>
+					<feedbackAndSolution />
+				</CSSTransition>
 			</OboComponent>
 		)
 	}
